@@ -3,11 +3,18 @@ import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/widgets_common/custom_textwidget.dart';
+import 'package:get/get.dart';
 import '../../widgets_common/our_button.dart';
 
-class SingupScreen extends StatelessWidget {
+class SingupScreen extends StatefulWidget {
   const SingupScreen({super.key});
 
+  @override
+  State<SingupScreen> createState() => _SingupScreenState();
+}
+
+class _SingupScreenState extends State<SingupScreen> {
+  bool? ischeck = false;
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -34,45 +41,74 @@ class SingupScreen extends StatelessWidget {
                 5.heightBox,
                 //ourButton().box.width(context.screenWidth - 50).make(),
 
+                Row(
+                  children: [
+                    Checkbox(
+                      activeColor: redColor,
+                      checkColor: whiteColor,
+                      value: ischeck,
+                      onChanged: (newValue) {
+                        setState(() {
+                          ischeck = newValue;
+                        });
+                      },
+                    ),
+                    10.widthBox,
+                    Expanded(
+                      child: RichText(
+                          text: const TextSpan(
+                        children: [
+                          TextSpan(
+                              text: "I agree to the",
+                              style: TextStyle(
+                                fontFamily: regular,
+                                color: fontGrey,
+                              )),
+                          TextSpan(
+                              text: termAndCond,
+                              style: TextStyle(
+                                fontFamily: regular,
+                                color: redColor,
+                              )),
+                          TextSpan(
+                              text: "&",
+                              style: TextStyle(
+                                fontFamily: regular,
+                                color: fontGrey,
+                              )),
+                          TextSpan(
+                              text: privacyPolicy,
+                              style: TextStyle(
+                                fontFamily: regular,
+                                color: redColor,
+                              ))
+                        ],
+                      )),
+                    ),
+                  ],
+                ),
                 ourButton(
-                        color: redColor,
-                        title: login,
+                        color: ischeck == true ? redColor : lightGrey,
+                        title: signup,
                         textColor: whiteColor,
                         onPress: () {})
                     .box
                     .width(context.screenWidth - 50)
                     .make(),
-                5.heightBox,
-                createNewAccount.text.color(fontGrey).make(),
-                5.heightBox,
-                ourButton(
-                        color: golden,
-                        title: signup,
-                        textColor: redColor,
-                        onPress: () {})
-                    .box
-                    .width(context.screenWidth - 50)
-                    .make(),
-
                 10.heightBox,
-                loginWith.text.color(fontGrey).make(),
-                5.heightBox,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                      3,
-                      (index) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: CircleAvatar(
-                              backgroundColor: lightGrey,
-                              radius: 25,
-                              child: Image.asset(
-                                socialIconList[index],
-                                width: 30,
-                              ),
-                            ),
-                          )),
-                )
+                RichText(
+                    text: const TextSpan(children: [
+                  TextSpan(
+                    text: alreadyHaveAccount,
+                    style: TextStyle(fontFamily: bold, color: fontGrey),
+                  ),
+                  TextSpan(
+                    text: login,
+                    style: TextStyle(fontFamily: bold, color: redColor),
+                  )
+                ])).onTap(() {
+                  Get.back();
+                }),
               ],
             )
                 .box
