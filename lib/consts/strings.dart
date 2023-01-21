@@ -31,4 +31,5 @@ const searchanything = "Search anything...",
     flashsale = "Flash Sale",
     topSeller = "Top Sellers",
     topCategory = "Top Category",
+    brand = "Brand",
     featuredCategories = "Featured Categories";
