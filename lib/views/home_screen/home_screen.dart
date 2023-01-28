@@ -1,6 +1,7 @@
 import 'package:emart_app/consts/colors.dart';
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
+import 'package:emart_app/views/home_screen/components/featured_button.dart';
 import 'package:emart_app/widgets_common/home_buttons.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -120,6 +121,75 @@ class HomeScreen extends StatelessWidget {
                           .size(15)
                           .fontFamily(semibold)
                           .make(),
+                    ),
+                    20.heightBox,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                          children: List.generate(
+                              3,
+                              (index) => Column(
+                                    children: [
+                                      featuredButton(
+                                          icon: featuredImages1[index],
+                                          title: featuredTities1[index]),
+                                      10.heightBox,
+                                      featuredButton(
+                                          icon: featuredImages2[index],
+                                          title: featuredTities2[index]),
+                                    ],
+                                  )).toList()),
+                    ),
+                    20.heightBox,
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      width: double.infinity,
+                      decoration: const BoxDecoration(color: redColor),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          featuredProduct.text.white
+                              .fontFamily(bold)
+                              .size(18)
+                              .make(),
+                          10.heightBox,
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: List.generate(
+                                  6,
+                                  (index) => Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Image.asset(imgP1,
+                                              width: 150, fit: BoxFit.cover),
+                                          10.heightBox,
+                                          "Laptop 4GB/64GB"
+                                              .text
+                                              .fontFamily(semibold)
+                                              .color(darkFontGrey)
+                                              .make(),
+                                          10.heightBox,
+                                          "\$600"
+                                              .text
+                                              .color(redColor)
+                                              .fontFamily(bold)
+                                              .size(16)
+                                              .make(),
+                                        ],
+                                      )
+                                          .box
+                                          .white
+                                          .margin(const EdgeInsets.symmetric(
+                                              horizontal: 4))
+                                          .rounded
+                                          .padding(const EdgeInsets.all(8))
+                                          .make()),
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
