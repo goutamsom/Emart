@@ -4,8 +4,10 @@ Widget bgWidget({
   Widget? child,
 }) {
   return Container(
-    decoration:
-        BoxDecoration(image: DecorationImage(image: AssetImage(imgBackground))),
+    decoration: BoxDecoration(
+        image: const DecorationImage(
+            fit: BoxFit.fill, image: AssetImage(imgBackground)),
+        color: Colors.white),
     child: child,
   );
 }

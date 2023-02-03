@@ -190,7 +190,69 @@ class HomeScreen extends StatelessWidget {
                           )
                         ],
                       ),
-                    )
+                    ),
+
+                    //third swiper
+                    20.heightBox,
+                    VxSwiper.builder(
+                      aspectRatio: 16 / 5,
+                      autoPlay: true,
+                      height: 150,
+                      enlargeCenterPage: true,
+                      itemCount: slidersList.length,
+                      itemBuilder: (context, index) {
+                        return Image.asset(
+                          slidersList[index],
+                          fit: BoxFit.cover,
+                        )
+                            .box
+                            .rounded
+                            .clip(Clip.antiAlias)
+                            .margin(const EdgeInsets.symmetric(horizontal: 5))
+                            .make();
+                      },
+                    ),
+
+                    20.heightBox,
+                    GridView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 6,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 8,
+                                crossAxisSpacing: 8,
+                                mainAxisExtent: 300),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(imgP5,
+                                  height: 200, width: 200, fit: BoxFit.cover),
+                              const Spacer(),
+                              10.heightBox,
+                              "Laptop 4GB/64GB"
+                                  .text
+                                  .fontFamily(semibold)
+                                  .color(darkFontGrey)
+                                  .make(),
+                              10.heightBox,
+                              "\$600"
+                                  .text
+                                  .color(redColor)
+                                  .fontFamily(bold)
+                                  .size(16)
+                                  .make()
+                            ],
+                          )
+                              .box
+                              .white
+                              .margin(const EdgeInsets.symmetric(horizontal: 4))
+                              .rounded
+                              .padding(const EdgeInsets.all(12))
+                              .make();
+                        })
                   ],
                 ),
               ),
